@@ -7,6 +7,10 @@
     "transform": [
       {
         "filter": "datum.ranked > 0 && datum.score > 0"
+      },
+      {
+        "calculate": "indexof(datum.genre, ',') > -1 ? 'Multi Genre' : datum.genre",
+        "as": "genre"
       }
     ],
     "mark": "point",
@@ -52,6 +56,9 @@
         "mark": "point"
       },
       {
+        "transform": [
+          {"filter": "datum.title == 'Kimetsu no Yaiba' || datum.title == 'Shingeki no Kyojin'"}
+        ],
         "mark": {
           "type": "text",
           "align": "left",

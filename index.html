@@ -209,6 +209,12 @@
   "layer": [
     {
       "mark": "circle",
+      "transform": [
+      {
+          "calculate": "datum.Continent === 'North America' ? 'Shonen' : datum.Continent === 'South America' ? 'Isekai' : datum.Continent === 'Europe' ? 'Slice of Life' : datum.Continent === 'Africa' ? 'Fantasy' : datum.Continent === 'Asia' ? 'Comedy' : 'Romance'",
+          "as": "CustomContinent"
+        }
+      ],
       "encoding": {
         // "size": {
         //   "field": "Population",
@@ -221,27 +227,36 @@
         //   "legend": {"format": ".1s"}
         // },
         "color": {
-          "field": "Continent",
+          "field": "CustomContinent",
           "type": "nominal",
           "scale": {
             "domain": [
-                
-              "North America",
-              "South America",
-              "Europe",
-              "Africa",
-              "Asia",
-              "Oceania"
+              "Shonen",
+              "Isekai",
+              "Slice of Life",
+              "Fantasy",
+              "Comedy",
+              "Romance"
             ],
+            // "domain": [
+                
+            //   "North America",
+            //   "South America",
+            //   "Europe",
+            //   "Africa",
+            //   "Asia",
+            //   "Oceania"
+            // ],
             "range": 
             [
-  "#2ca02c",  // Green
-  "#d62728",  // Red
-  "#1f77b4",  // Blue
-  "#9467bd",  // Purple
-  "#ff7f0e",  // Orange
-  "#8c564b"   // Brown
-]
+            "#2ca02c",  // Green
+            "#d62728",  // Red
+            "#1f77b4",  // Blue
+            "#9467bd",  // Purple
+            "#ff7f0e",  // Orange
+            "#8c564b"   // Brown
+            ]
+        }
             // [
             //   "#e41a1c",
             //   "#984ea3",
@@ -250,7 +265,10 @@
             //   "#377eb8",
             //   "#a65628"
             // ]
-          }
+            ,
+            "legend" : {
+                "title": "Genre",
+            }
         },
         "opacity": {"value": 0.6},
         "tooltip": [
